@@ -20,7 +20,7 @@ function Hero({ openConsult }) {
         background: "radial-gradient(ellipse 60% 80% at 15% 70%, rgba(14,24,33,0.70), transparent 70%)",
       }}/>
 
-      <div className="container" style={{
+      <div className="container kb-hero-inner" style={{
         position: "relative", padding: "140px 32px 80px",
         minHeight: "min(92vh, 860px)",
         display: "flex", alignItems: "flex-end",
@@ -91,13 +91,13 @@ function Hero({ openConsult }) {
 function DiffRow({ d, i }) {
   const flip = i % 2 === 1;
   return (
-    <div style={{
+    <div className="kb-diff-grid" style={{
       display: "grid",
       gridTemplateColumns: "repeat(12, 1fr)",
       gap: 48, alignItems: "center",
       marginBottom: 120,
     }}>
-      <div style={{
+      <div className="kb-diff-img" style={{
         gridColumn: flip ? "7 / span 6" : "1 / span 6",
         gridRow: 1,
         aspectRatio: "5/4", borderRadius: 4, overflow: "hidden",
@@ -107,7 +107,7 @@ function DiffRow({ d, i }) {
           width: "100%", height: "100%", objectFit: "cover", display: "block",
         }}/>
       </div>
-      <div style={{
+      <div className="kb-diff-text" style={{
         gridColumn: flip ? "1 / span 5" : "8 / span 5",
         gridRow: 1,
       }}>
@@ -126,7 +126,7 @@ function DiffRow({ d, i }) {
 
 function Differentiators({ openConsult }) {
   return (
-    <section style={{ padding: "120px 0 40px", background: "var(--surface)" }}>
+    <section className="kb-section" style={{ padding: "120px 0 40px", background: "var(--surface)" }}>
       <div className="container" style={{ padding: "0 32px", maxWidth: 1200 }}>
         {DIFFS.map((d, i) => <DiffRow key={i} d={d} i={i} />)}
         <div style={{ textAlign: "center", paddingTop: 20 }}>
@@ -148,7 +148,7 @@ function Differentiators({ openConsult }) {
 function ServicesStrip({ onNavigate }) {
   const shown = SERVICES.slice(0, 4);
   return (
-    <section style={{ background: "var(--lavender)", padding: "110px 0 120px" }}>
+    <section className="kb-section" style={{ background: "var(--lavender)", padding: "110px 0 120px" }}>
       <div className="container" style={{ padding: "0 32px", maxWidth: 1200 }}>
         <div style={{ textAlign: "center", maxWidth: 760, margin: "0 auto 64px" }}>
           <h2 style={{
@@ -159,7 +159,7 @@ function ServicesStrip({ onNavigate }) {
             {" "}tile for the most loved rooms in your home.
           </h2>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20 }}>
+        <div className="kb-services-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20 }}>
           {shown.map(s => <ServicePhotoCard key={s.slug} s={s} onNavigate={onNavigate} />)}
         </div>
       </div>
@@ -211,9 +211,9 @@ function ServicePhotoCard({ s, onNavigate }) {
 // ─────────────────────────────────────────────────────────────
 function FounderNote() {
   return (
-    <section style={{ padding: "120px 0", background: "var(--surface)" }}>
+    <section className="kb-section" style={{ padding: "120px 0", background: "var(--surface)" }}>
       <div className="container" style={{ padding: "0 32px", maxWidth: 1200 }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1.3fr 1fr", gap: 80, alignItems: "center" }}>
+        <div className="kb-founder-grid" style={{ display: "grid", gridTemplateColumns: "1.3fr 1fr", gap: 80, alignItems: "center" }}>
           <div>
             <h2 style={{
               fontSize: "clamp(30px, 3.4vw, 44px)", fontWeight: 500, lineHeight: 1.12,
@@ -238,7 +238,7 @@ function FounderNote() {
               margin: 0, fontFamily: "var(--font-display)",
             }}>{BRAND.founderNote}</p>
           </div>
-          <div style={{
+          <div className="kb-founder-portrait" style={{
             aspectRatio: "3/4", borderRadius: 4, overflow: "hidden",
             background: "var(--lavender)",
           }}>
@@ -255,7 +255,7 @@ function StatsBand() {
   return (
     <section style={{ background: "var(--ink-fill)", color: "#fff", padding: "80px 0" }}>
       <div className="container" style={{ padding: "0 32px", maxWidth: 1200 }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 32 }}>
+        <div className="kb-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 32 }}>
           {STATS.map(s => (
             <div key={s.label} style={{ textAlign: "center" }}>
               <div style={{
@@ -396,9 +396,9 @@ function ProcessStrip() {
             <em style={{ fontStyle: "italic", color: "var(--accent)" }}>3 steps</em>{" "}away.
           </h2>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 48, position: "relative" }}>
+        <div className="kb-process-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 48, position: "relative" }}>
           {/* connecting line */}
-          <div style={{
+          <div className="kb-process-line" style={{
             position: "absolute", top: 28, left: "16%", right: "16%", height: 1,
             background: "var(--lavender-hover)", zIndex: 0,
           }}/>
@@ -458,7 +458,7 @@ function Newsletter() {
             Thank you — you're on the list.
           </p>
         ) : (
-          <form onSubmit={submit} style={{ display: "flex", gap: 10, maxWidth: 480, margin: "0 auto" }}>
+          <form onSubmit={submit} className="kb-newsletter-form" style={{ display: "flex", gap: 10, maxWidth: 480, margin: "0 auto" }}>
             <input type="email" required value={email} onChange={e => setEmail(e.target.value)}
               placeholder="Email address" style={{
                 flex: 1, padding: "14px 18px", borderRadius: 6, border: 0,
@@ -520,8 +520,9 @@ function Footer({ onNavigate }) {
   return (
     <footer style={{ background: "#0e1128", color: "rgba(255,255,255,.8)" }}>
       <div className="container" style={{ padding: "72px 32px 32px", maxWidth: 1200 }}>
-        <div style={{
-          display: "grid", gridTemplateColumns: "1.2fr 1fr 1fr 1fr",
+        <div className="kb-footer-grid" style={{
+          display: "grid",
+          gridTemplateColumns: "1.2fr 1fr 1fr 1fr",
           gap: 48, marginBottom: 48,
         }}>
           <div>

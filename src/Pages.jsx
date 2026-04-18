@@ -37,7 +37,7 @@ function PageHeader({ eyebrow, title, sub, image }) {
         position: "absolute", inset: 0,
         background: "linear-gradient(180deg, rgba(14,24,33,0.70) 0%, rgba(14,24,33,0.88) 100%)",
       }}/>
-      <div className="container" style={{
+      <div className="container kb-page-header-inner" style={{
         position: "relative", padding: "180px 32px 100px", maxWidth: 1200, color: "#fff",
       }}>
         {eyebrow && <p className="eyebrow" style={{ color: "var(--accent)", marginBottom: 20 }}>{eyebrow}</p>}
@@ -98,7 +98,7 @@ function AboutPage({ onNavigate, openConsult }) {
               What you can count on, every single day.
             </h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32 }}>
+          <div className="kb-values-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32 }}>
             {[
               { t: "Craft before speed", d: "We won't rush a layout. Better to spend a day on a cut than deliver a room you'll squint at for a decade." },
               { t: "One number, one crew", d: "No phone-tree, no sub-contracted surprises. Our setters are W-2 employees we trained ourselves." },
@@ -132,7 +132,7 @@ function ServicesPage({ onNavigate, openConsult }) {
       />
       <section style={{ padding: "100px 0", background: "var(--surface)" }}>
         <div className="container" style={{ padding: "0 32px", maxWidth: 1200 }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 32 }}>
+          <div className="kb-services-list-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 32 }}>
             {SERVICES.map((s, i) => (
               <button key={s.slug} onClick={() => onNavigate(`service/${s.slug}`)} style={{
                 textAlign: "left", background: "none", border: 0, padding: 0, cursor: "pointer",
@@ -172,7 +172,7 @@ function ServiceDetailPage({ slug, onNavigate, openConsult }) {
       />
       <section style={{ padding: "100px 0", background: "var(--surface)" }}>
         <div className="container" style={{ padding: "0 32px", maxWidth: 1100 }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 64 }}>
+          <div className="kb-service-detail-grid" style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 64 }}>
             <div>
               <p className="eyebrow" style={{ marginBottom: 16 }}>Scope</p>
               <h2 style={{ fontSize: "clamp(28px, 3vw, 38px)", fontWeight: 500, letterSpacing: "-0.02em", color: "var(--ink)", margin: "0 0 24px" }}>
@@ -222,7 +222,7 @@ function ServiceDetailPage({ slug, onNavigate, openConsult }) {
           <h3 style={{ textAlign: "center", fontSize: "clamp(24px, 2.6vw, 32px)", fontWeight: 500, letterSpacing: "-0.02em", margin: "0 0 40px" }}>
             Explore other Konar Bros specialties.
           </h3>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20 }}>
+          <div className="kb-service-more-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20 }}>
             {SERVICES.filter(x => x.slug !== s.slug).map(x => (
               <button key={x.slug} onClick={() => onNavigate(`service/${x.slug}`)} style={{
                 background: "var(--surface)", border: "1px solid var(--lavender-hover)", borderRadius: 6,
@@ -278,7 +278,7 @@ function PortfolioPage({ onNavigate, openConsult }) {
               }}>{t}</button>
             ))}
           </div>
-          <div style={{
+          <div className="kb-portfolio-grid" style={{
             display: "grid",
             gridTemplateColumns: "repeat(12, 1fr)",
             gap: 16,
@@ -371,7 +371,7 @@ function ContactPage() {
       />
       <section style={{ padding: "100px 0", background: "var(--surface)" }}>
         <div className="container" style={{ padding: "0 32px", maxWidth: 1100 }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1.3fr 1fr", gap: 64 }}>
+          <div className="kb-contact-grid" style={{ display: "grid", gridTemplateColumns: "1.3fr 1fr", gap: 64 }}>
             <div>
               {sent ? (
                 <div style={{ padding: "60px 40px", background: "var(--lavender)", borderRadius: 8, textAlign: "center" }}>
@@ -385,7 +385,7 @@ function ContactPage() {
                 </div>
               ) : (
                 <form onSubmit={submit} style={{ display: "grid", gap: 20 }}>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+                  <div className="kb-contact-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
                     <Field label="Your name">
                       <input required value={form.name} onChange={e => update("name", e.target.value)} style={inputStyle}/>
                     </Field>
@@ -393,7 +393,7 @@ function ContactPage() {
                       <input type="email" required value={form.email} onChange={e => update("email", e.target.value)} style={inputStyle}/>
                     </Field>
                   </div>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+                  <div className="kb-contact-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
                     <Field label="Phone">
                       <input type="tel" value={form.phone} onChange={e => update("phone", e.target.value)} style={inputStyle}/>
                     </Field>

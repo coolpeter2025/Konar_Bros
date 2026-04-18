@@ -191,3 +191,82 @@ h1, h2, h3, h4, h5, h6, .th-display {
   min-height: 48px; font-size: var(--fs-base);
 }
 .btn-outline-white:hover { background: #fff; color: var(--navy); }
+
+/* ==========================================================================
+   Responsive — mobile-first layout overrides
+   All grid/flex layouts use inline styles; !important is required here.
+   ========================================================================== */
+
+/* ── Tablet ≤ 1024px ─────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .kb-services-grid      { grid-template-columns: repeat(2, 1fr) !important; }
+  .kb-footer-grid        { grid-template-columns: 1fr 1fr !important; gap: 36px !important; }
+  .kb-service-more-grid  { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ── Mobile ≤ 768px ──────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Container horizontal padding */
+  .container { padding-left: 20px !important; padding-right: 20px !important; }
+
+  /* Section vertical rhythm */
+  .kb-section    { padding-top: 64px !important; padding-bottom: 64px !important; }
+  .kb-section-sm { padding-top: 48px !important; padding-bottom: 48px !important; }
+
+  /* Hero */
+  .kb-hero-inner { padding: 110px 20px 56px !important; }
+
+  /* Differentiators — switch 12-col grid to flex column */
+  .kb-diff-grid       { display: flex !important; flex-direction: column !important; gap: 28px !important; margin-bottom: 56px !important; }
+  .kb-diff-img        { width: 100% !important; aspect-ratio: 4/3 !important; }
+  .kb-diff-text       { width: 100% !important; }
+
+  /* Services 4-up → 1-col */
+  .kb-services-grid   { grid-template-columns: 1fr !important; }
+
+  /* Founder note → stack, portrait → landscape */
+  .kb-founder-grid    { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .kb-founder-portrait { aspect-ratio: 4/3 !important; }
+
+  /* Stats → 2×2 */
+  .kb-stats-grid      { grid-template-columns: repeat(2, 1fr) !important; gap: 20px !important; }
+
+  /* Process → vertical stack, hide connecting line */
+  .kb-process-grid    { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .kb-process-line    { display: none !important; }
+
+  /* Newsletter form → stack */
+  .kb-newsletter-form { flex-direction: column !important; }
+  .kb-newsletter-form input { width: 100% !important; }
+
+  /* Footer → 1-col */
+  .kb-footer-grid     { grid-template-columns: 1fr !important; gap: 32px !important; }
+
+  /* Page header inner padding */
+  .kb-page-header-inner { padding-top: 130px !important; padding-bottom: 60px !important; }
+
+  /* About values → 1-col */
+  .kb-values-grid     { grid-template-columns: 1fr !important; }
+
+  /* Services listing → 1-col */
+  .kb-services-list-grid { grid-template-columns: 1fr !important; }
+
+  /* Service detail → stack */
+  .kb-service-detail-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .kb-service-more-grid   { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Portfolio → 2-col masonry */
+  .kb-portfolio-grid  { grid-template-columns: repeat(2, 1fr) !important; }
+  .kb-portfolio-grid > button { grid-column: span 1 !important; }
+
+  /* Contact → stack */
+  .kb-contact-grid    { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .kb-contact-row     { grid-template-columns: 1fr !important; gap: 16px !important; }
+}
+
+/* ── Small mobile ≤ 480px ────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .kb-services-grid      { grid-template-columns: 1fr !important; }
+  .kb-portfolio-grid     { grid-template-columns: 1fr !important; }
+  .kb-service-more-grid  { grid-template-columns: 1fr !important; }
+}
